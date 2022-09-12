@@ -1,0 +1,15 @@
+C:\Users\Lenovo\Desktop\sampling\Sampling\Sampling\bin\Debug\net6.0\Sampling.exe
+C:\Users\Lenovo\Desktop\sampling\Sampling\Sampling\bin\Debug\net6.0\Sampling.deps.json
+C:\Users\Lenovo\Desktop\sampling\Sampling\Sampling\bin\Debug\net6.0\Sampling.runtimeconfig.json
+C:\Users\Lenovo\Desktop\sampling\Sampling\Sampling\bin\Debug\net6.0\Sampling.dll
+C:\Users\Lenovo\Desktop\sampling\Sampling\Sampling\bin\Debug\net6.0\Sampling.pdb
+C:\Users\Lenovo\Desktop\sampling\Sampling\Sampling\obj\Debug\net6.0\Sampling.csproj.AssemblyReference.cache
+C:\Users\Lenovo\Desktop\sampling\Sampling\Sampling\obj\Debug\net6.0\Sampling.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Lenovo\Desktop\sampling\Sampling\Sampling\obj\Debug\net6.0\Sampling.AssemblyInfoInputs.cache
+C:\Users\Lenovo\Desktop\sampling\Sampling\Sampling\obj\Debug\net6.0\Sampling.AssemblyInfo.cs
+C:\Users\Lenovo\Desktop\sampling\Sampling\Sampling\obj\Debug\net6.0\Sampling.csproj.CoreCompileInputs.cache
+C:\Users\Lenovo\Desktop\sampling\Sampling\Sampling\obj\Debug\net6.0\Sampling.dll
+C:\Users\Lenovo\Desktop\sampling\Sampling\Sampling\obj\Debug\net6.0\refint\Sampling.dll
+C:\Users\Lenovo\Desktop\sampling\Sampling\Sampling\obj\Debug\net6.0\Sampling.pdb
+C:\Users\Lenovo\Desktop\sampling\Sampling\Sampling\obj\Debug\net6.0\Sampling.genruntimeconfig.cache
+C:\Users\Lenovo\Desktop\sampling\Sampling\Sampling\obj\Debug\net6.0\ref\Sampling.dll
