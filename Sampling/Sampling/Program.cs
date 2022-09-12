@@ -35,18 +35,41 @@
              * the output shall be sorted by time ascending
              */
             
-            List<Measurement> vMesureList = new List<Measurement>();
-            
-            foreach (Measurement unsampledMesure in unsampledMeasurements)
+            List<Measurement> vMeasureTEMP = new List<Measurement>();
+            List<Measurement> vMeasureSPO2 = new List<Measurement>();
+            List<Measurement> vMeasureRATE = new List<Measurement>();
+
+            foreach (Measurement unsampledMeasure in unsampledMeasurements)
             {
-
-
-                vReturnDict.Add(unsampledMesure.GetMeasurementType(), vMesureList);
+                if (unsampledMeasure.GetMeasurementType() == MeasurementType.TEMP)
+                {
+                    vMeasureTEMP.Add(unsampledMeasure);
+                }
+                else if (unsampledMeasure.GetMeasurementType() == MeasurementType.SPO2)
+                {
+                    vMeasureSPO2.Add(unsampledMeasure);
+                }
+                else
+                {
+                    vMeasureRATE.Add(unsampledMeasure);
+                }
             }
 
-
+            filterSample(vMeasureTEMP);
 
             return vReturnDict;
+        }
+
+        private static List<Measurement> filterSample(List<Measurement> unfilteredSample)
+        {
+            List<Measurement> sampleList = new List<Measurement>();
+
+            foreach(Measurement sample in unfilteredSample)
+            {
+
+            }
+
+            return sampleList;
         }
     }
 }
