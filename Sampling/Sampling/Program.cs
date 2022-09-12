@@ -1,12 +1,5 @@
 ﻿namespace Sampling
 {
-    public enum MeasurementType 
-    { 
-        TEMP, 
-        SPO2, 
-        RATE 
-    }
-
     public class Program 
     {
         public static void Main()
@@ -32,6 +25,7 @@
         // start of sampling (from when to take samples, unsampledMeasurements list of measurements
         public static Dictionary<MeasurementType, List<Measurement>> sample(DateTime startOfSampling, List<Measurement> unsampledMeasurements)
         {
+            Dictionary<MeasurementType, List<Measurement>> vReturnDict = new Dictionary<MeasurementType, List<Measurement>>();
             /*
              * each type of measurement shall be sampled separately
              * from a 5-minute interval only the last measurement shall be taken // 300
@@ -40,11 +34,19 @@
              * the input values are not sorted by time
              * the output shall be sorted by time ascending
              */
+            
+            List<Measurement> vMesureList = new List<Measurement>();
+            
+            foreach (Measurement unsampledMesure in unsampledMeasurements)
+            {
+
+
+                vReturnDict.Add(unsampledMesure.GetMeasurementType(), vMesureList);
+            }
 
 
 
-
-            return new Dictionary<MeasurementType, List<Measurement>>();
+            return vReturnDict;
         }
     }
 }

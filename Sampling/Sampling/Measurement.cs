@@ -30,5 +30,20 @@ namespace Sampling
         {
             Console.WriteLine("{0}, {1}, {2}", this.measurementTime, this.measurementValue, this.type);
         }
+
+        public DateTime GetMeasurementTime()
+        { 
+            return this.measurementTime; 
+        }
+
+        public Double GetMeasurementValue()
+        {
+            return this.measurementValue;
+        }
+
+        public MeasurementType GetMeasurementType()
+        {
+            return this.type;
+        }
     }
 }
