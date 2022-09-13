@@ -1,4 +1,7 @@
-﻿namespace Sampling
+﻿using System.Data;
+using System.Linq;
+
+namespace Sampling
 {
     public class Program 
     {
@@ -14,12 +17,12 @@
             vMesure.Add(new Measurement(DateTime.Parse("2017-01-03T10:05:00"), 97.17, MeasurementType.SPO2));
             vMesure.Add(new Measurement(DateTime.Parse("2017-01-03T10:05:01"), 95.08, MeasurementType.SPO2));
 
-            Dictionary<MeasurementType, List<Measurement>> vResult = sample(new DateTime(), vMesure);
+            Dictionary<MeasurementType, List<Measurement>> vResult = sample(DateTime.Parse("2017-01-03T10:00:00"), vMesure);
 
-            foreach (Measurement v in vMesure)
-            {
-                v.PrintData();
-            }
+            //foreach (Measurement v in vMesure)
+            //{
+            //    v.PrintData();
+            //}
         }
 
         // start of sampling (from when to take samples, unsampledMeasurements list of measurements
@@ -34,7 +37,7 @@
              * the input values are not sorted by time
              * the output shall be sorted by time ascending
              */
-            
+
             List<Measurement> vMeasureTEMP = new List<Measurement>();
             List<Measurement> vMeasureSPO2 = new List<Measurement>();
             List<Measurement> vMeasureRATE = new List<Measurement>();
@@ -49,24 +52,56 @@
                 {
                     vMeasureSPO2.Add(unsampledMeasure);
                 }
-                else
+                else if (unsampledMeasure.GetMeasurementType() == MeasurementType.RATE)
                 {
                     vMeasureRATE.Add(unsampledMeasure);
                 }
             }
 
-            filterSample(vMeasureTEMP);
+            List<Measurement> vMeasureTEMPF = filterSample(vMeasureTEMP, startOfSampling, 5);
+            foreach(var measure in vMeasureTEMPF)
+            {
+                measure.PrintData();
+            }
+
+            Console.WriteLine();
+
+            List<Measurement> vMeasureSPO2F  = filterSample(vMeasureSPO2, startOfSampling, 5);
+            foreach (var measure in vMeasureSPO2F)
+            {
+                measure.PrintData();
+            }
 
             return vReturnDict;
         }
 
-        private static List<Measurement> filterSample(List<Measurement> unfilteredSample)
+        private static List<Measurement> filterSample(List<Measurement> unfilteredSample, DateTime startOfSample, int minuteStep)
         {
             List<Measurement> sampleList = new List<Measurement>();
 
-            foreach(Measurement sample in unfilteredSample)
+            for (int i = 0; i < unfilteredSample.Count(); i++)
             {
+                DateTime stepStart = startOfSample.AddMinutes(i * minuteStep);
+                DateTime stepEnd = startOfSample.AddMinutes((i + 1) * minuteStep);
+                foreach (Measurement measure in unfilteredSample)
+                {
+                    if (stepStart < measure.GetMeasurementTime() && measure.GetMeasurementTime() <= stepEnd)
+                    {
+                        if (!sampleList.Where(x => x.GetMeasurementTime() > stepStart).Any())
+                        {
+                            sampleList.Add(measure);
+                        }
+                        else if (sampleList.Where(x => x.GetMeasurementTime() > stepStart && x.GetMeasurementTime() < measure.GetMeasurementTime()).Any())
+                        {
+                            int replaceIndex = sampleList.FindIndex(x => x.GetMeasurementTime() > stepStart && x.GetMeasurementTime() < measure.GetMeasurementTime());
 
+                            if (replaceIndex > -1)
+                            {
+                                sampleList[replaceIndex] = measure;  
+                            }
+                        }
+                    }
+                }
             }
 
             return sampleList;
